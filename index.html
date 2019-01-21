@@ -1,0 +1,730 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Grid | Little Known CSS Basics</title>
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/custom.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <link rel="stylesheet" href="https://use.typekit.net/mys5clg.css">
+
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides" id="vue">
+        <section>
+          <h1>Little Known <br />CSS Basics <em>Grid</em></h1>
+        </section>
+
+        <section data-background="https://secure.meetupstatic.com/photos/event/9/7/f/b/highres_477698907.jpeg"></section>
+
+        <section>
+          <section>
+            <h2>Grid Container Properties</h2>
+          </section>
+
+          <section>
+            <h3><code>display: grid</code></h3>
+            <p class="xfragment">This element will use the <b>grid layout</b> method to position all its children.</p>
+            <h3 class="xfragment"><code>display: inline-grid</code></h3>
+            <p class="xfragment"><code>block</code> : <code>inline-block</code> :: <code>grid</code> : <code>inline-grid</code></p>
+          </section>
+
+          <section>
+            <ul>
+              <li><code>grid-template-columns</code></li>
+              <li><code>grid-template-rows</code></li>
+              <li><code>grid-template-areas</code></li>
+              <li><code>grid-auto-columns</code></li>
+              <li><code>grid-auto-rows</code></li>
+              <li><code>grid</code></li>
+              <li><code>gap</code></li>
+              <li><code>justify-items</code></li>
+              <li><code>align-items</code></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3><code>grid-template-columns</code></h3>
+            <p class="xfragment">Set the proportions for tracks along the <em>block axis</em> of the grid container</p>
+            <p class="xfragment">Value: a series of valid length values</p>
+            <ul class="xfragment">
+              <li><code>1fr 50em 35em 1fr</code></li>
+              <li><code>30% 150px 30%</code></li>
+            </ul>
+          </section>
+
+          <section>
+            <grid-container property="grid-template-columns" />
+          </section>
+
+          <section>
+            <h3><code>grid-template-rows</code></h3>
+            <p class="xfragment">Set the proportions for tracks along the <em>inline axis</em> of the grid container</p>
+            <p class="xfragment">Value: a series of valid length values</p>
+            <ul class="xfragment">
+              <li><code>300px 200px auto</code></li>
+              <li><code>30% 150px 30%</code></li>
+            </ul>
+          </section>
+
+          <section>
+            <grid-container property="grid-template-rows" />
+          </section>
+
+          <section>
+            <h3><code>grid-template-areas</code></h3>
+            <p class="xfragment">Assign names to grid areas</p>
+            <pre><code class="css">grid-template-columns: 40em 20em;
+grid-template-rows: repeat(3, auto);
+grid-template-areas:
+  "header header"
+  "body sidebar"
+  "footer footer";</code></pre>
+          </section>
+
+          <section>
+            <h3><code>grid-auto-columns</code></h3>
+            <p class="xfragment">Set size to be repeated for all tracks along the <em>block axis</em> of the grid container</p>
+            <p class="xfragment">Value: a valid length value</p>
+            <ul class="xfragment" style="columns: 2; column-gap: 2em">
+              <li><code>200px</code></li>
+              <li><code>1fr</code></li>
+              <li><code>20%</code></li>
+              <li><code>auto</code></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3><code>grid-auto-rows</code></h3>
+            <p class="xfragment">Set size to be repeated for all tracks along the <em>inline axis</em> of the grid container</p>
+            <p class="xfragment">Value: a valid length value</p>
+            <ul class="xfragment" style="columns: 2; column-gap: 2em">
+              <li><code>200px</code></li>
+              <li><code>10rem</code></li>
+              <li><code>auto</code></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3><code>grid</code></h3>
+            <p class="xfragment">Shorthand for any pair of <br /><code>-template-</code> or <code>-auto-</code> <br /><code>rows</code> / <code>columns</code> values</p>
+            <p class="xfragment"><code>rows / columns</code></p>
+          </section>
+
+          <section>
+            <h3><code>gap</code></h3>
+            <p class="xfragment">Creates gaps between columns and rows</p>
+            <p class="xfragment">Formerly called <code>grid-gap</code></p>
+            <p class="xfragment">Shorthand for <br /><code>row-gap column-gap</code></p>
+          </section>
+
+          <section>
+            <grid-container property="gap" />
+          </section>
+
+          <section>
+            <h3><code>justify-items</code></h3>
+            <p class="xfragment">Distributes children along the <em>inline axis</em> of the flex container</p>
+            <ul style="columns: 2">
+              <li><code>stretch</code></li>
+              <li><code>start</code></li>
+              <li><code>end</code></li>
+              <li><code>center</code></li>
+              <li><code>baseline</code></li>
+              <li><code>first baseline</code></li>
+              <li><code>last baseline</code></li>
+            </ul>
+          </section>
+
+          <section>
+            <grid-container property="justify-items" />
+          </section>
+
+          <section>
+            <h3><code>align-items</code></h3>
+            <p class="xfragment">Aligns children on the <em>inline axis</em> of the flex container</p>
+            <ul style="columns: 2">
+              <li><code>start</code></li>
+              <li><code>end</code></li>
+              <li><code>center</code></li>
+              <li><code>stretch</code></li>
+              <li><code>baseline</code></li>
+              <li><code>first baseline</code></li>
+              <li><code>last baseline</code></li>
+            </ul>
+          </section>
+
+          <section>
+            <grid-container property="align-items" />
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Grid Container Values</h2>
+          </section>
+
+          <section>
+            <h3>CSS Lengths</h3>
+            <p class="xfragment">Any normal CSS length is a valid grid track value.</p>
+            <ul class="xfragment" style="columns: 3; column-gap: 2em">
+              <li><code>px</code></li>
+              <li><code>%</code></li>
+              <li><code>pt</code></li>
+              <li><code>pc</code></li>
+              <li><code>in</code></li>
+              <li><code>cm</code></li>
+              <li><code>mm</code></li>
+              <li><code>em</code></li>
+              <li><code>rem</code></li>
+              <li><code>ch</code></li>
+              <li><code>vw</code></li>
+              <li><code>vh</code></li>
+              <li><code>vmin</code></li>
+              <li><code>vmax</code></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3><code>fr</code></h3>
+            <p class="xfragment">One &ldquo;fraction&rdquo; of the grid&rsquo;s available space</p>
+            <p class="xfragment">Based on total number of <code>fr</code> in the row or column</p>
+            <p class="xfragment">Calculated after non-<code>fr</code> space is used</p>
+            <a href="https://codepen.io/jdsteinbach/pen/PVYVKB" rel="noopener noreferer nofollow" target="_blank" class="pen">Grid f r row height on CodePen</a>
+          </section>
+
+          <section>
+            <h3><code>fr</code></h3>
+            <p class="xfragment"><code>300px 1fr</code></p>
+            <p class="xfragment"><code>1fr 50em 25em 1fr</code></p>
+            <p class="xfragment"><code>.6fr 1.6fr 1fr</code></p>
+          </section>
+
+          <section>
+            <h3><code>min-content</code><br /><code>max-content</code></h3>
+            <p class="xfragment">The smallest and largest space that the elements in that track can take up</p>
+            <a href="https://codepen.io/jdsteinbach/pen/jXjOYz" rel="noopener noreferer nofollow" target="_blank" class="pen">min-content and max-content on CodePen</a>
+          </section>
+
+          <section>
+            <h3><code>repeat()</code></h3>
+            <p class="xfragment">Repeats a certain value a specified number of times</p>
+            <p class="xfragment"><code>repeat(&lt;count&gt;, &lt;length&gt;)</code></p>
+            <p class="xfragment"><code>repeat(12, 1fr)</code></p>
+          </section>
+
+          <section>
+            <h3><code>minmax()</code></h3>
+            <p class="xfragment">Finds a value between two lengths</p>
+            <p class="xfragment"><code>minmax(&lt;min&gt;, &lt;max&gt;)</code></p>
+            <p class="xfragment"><code>minmax(0, 1fr)</code></p>
+          </section>
+
+          <section>
+            <h3><code>fit-content()</code></h3>
+            <p class="xfragment">Equivalent to <br /><code>minmax(auto, max-content)</code></p>
+            <p class="xfragment">Clamp argument overrides <br /><code>max-content</code></p>
+            <p class="xfragment"><code>fit-content(&lt;clamp&gt;)</code></p>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Grid Child Properties</h2>
+          </section>
+
+          <section>
+            <ul>
+              <li><code>grid-column</code></li>
+              <li><code>grid-row</code></li>
+              <li><code>grid-area</code></li>
+              <li><code>order</code></li>
+              <li><code>align-self</code></li>
+              <li><code>justify-self</code></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3><code>grid-column</code></h3>
+            <p class="xfragment">Which column grid-line(s) this element should start (&amp; stop) at</p>
+            <p class="xfragment">Numbers correspond to <i>gaps</i>, not <i>columns</i></p>
+            <p class="xfragment">Values: <code>integer [ integer ]</code></p>
+          </section>
+
+          <section>
+            <h3><code>grid-row</code></h3>
+            <p class="xfragment">Which row grid-line(s) this element should start (&amp; stop) at</p>
+            <p class="xfragment">Numbers correspond to <i>gaps</i>, not <i>columns</i></p>
+            <p class="xfragment">Values: <code>integer [ integer ]</code></p>
+          </section>
+
+          <section>
+            <h3><code>grid-area</code></h3>
+            <p class="xfragment">A named <code>grid-template-areas</code> location</p>
+            <p class="xfragment">Shorthand for <br /><code>row-start / column-start / row-end / column-end</code></p>
+          </section>
+
+          <section>
+            <grid-container children="1" interactive-children />
+          </section>
+
+          <section>
+            <h3><code>order</code></h3>
+            <p class="xfragment">Change the element&rsquo;s location along the <em>main axis</em></p>
+            <p class="xfragment">Relative to <code>order</code> of all siblings</p>
+            <p class="xfragment">Value: <code>integer</code></p>
+          </section>
+
+          <section>
+            <h3><code>align-self</code></h3>
+            <p class="xfragment">Allows the element to override its parent&rsquo;s <code>align-items</code> value</p>
+            <p class="xfragment">Value: any <code>align-items</code> value</p>
+          </section>
+
+          <section>
+            <h3><code>justify-self</code></h3>
+            <p class="xfragment">Allows the element to override its parent&rsquo;s <code>justify-items</code> value</p>
+            <p class="xfragment">Value: any <code>justify-items</code> value</p>
+          </section>
+
+          <section>
+            <grid-container children="3" interactive-children />
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Use Cases</h2>
+          </section>
+
+          <section>
+            <h3>Perfect Centering</h3>
+            <pre class="xfragment"><code>.container {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}</code></pre>
+          </section>
+
+          <section>
+            <h3>Perfect Centering</h3>
+            <grid-container
+              hide-select
+              children="1"
+              property="justify-items"
+              value="center"
+              property-b="align-items"
+              value-b="center"
+            />
+          </section>
+
+          <section>
+            <h3>Global Grid Layout</h3>
+            <pre class="xfragment"><code>.parent {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}</code></pre>
+          </section>
+
+          <section>
+            <h3>Global Grid Layout</h3>
+            <grid-container
+              hide-select
+              children="3"
+              property="grid-template-columns"
+              value="repeat(3, 1fr)"
+              property-b="grid-template-rows"
+              value-b="1fr"
+            />
+          </section>
+
+          <section>
+            <h3>Equal-Height Grids</h3>
+            <pre class="xfragment"><code>.parent {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 1fr;
+}</code></pre>
+          </section>
+
+          <section>
+            <h3>Equal-Height Grids</h3>
+            <grid-container
+              hide-select
+              children="9"
+              property="grid-template-columns"
+              value="repeat(3, 1fr)"
+              property-b="grid-auto-rows"
+              value-b="1fr"
+            />
+          </section>
+
+          <section>
+            <h3>Other Grid Use Cases</h3>
+            <div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:start">
+              <p style="margin:.5em"><a href="https://codepen.io/jdsteinbach/pen/NoWKbE?editors=1100" target="_blank" rel="noopener">Header/Footer</a></p>
+              <p style="margin:.5em"><a href="https://codepen.io/jdsteinbach/pen/bzGbgm?editors=1100" target="_blank" rel="noopener">&ldquo;Holy Grail&rdquo; Layout</a></p>
+              <p style="margin:.5em"><a href="https://codepen.io/jdsteinbach/pen/zeYORB?editors=1100" target="_blank" rel="noopener">Header Nav</a></p>
+              <p style="margin:.5em"><a href="https://codepen.io/jdsteinbach/pen/MLWWop?editors=1100" target="_blank" rel="noopener">Calendar</a></p>
+              <p style="margin:.5em"><a href="https://codepen.io/jdsteinbach/pen/QJWbMb?editors=1100" target="_blank" rel="noopener">Bar Chart</a></p>
+            </div>
+          </section>
+
+          <section>
+            <h3>Flexbox vs. Grid</h3>
+            <p class="xfragment">Flexbox is 1-dimensional: it sets a <em>main axis</em> and provides controls for positioning elements along that axis.</p>
+            <p class="xfragment">Grid is 2-dimensional: it sets both block and inline axes and provides controls for positioning elements along either/both axes.</p>
+          </section>
+        </section>
+
+        <section>
+          <h2>Resources</h2>
+          <ul>
+            <li><a rel="noreferrer noopener nofollow" target="_blank" href="https://developer.mozilla.org/en-US/docs/Glossary/Grid">MDN: Grid</a></li>
+            <li><a rel="noreferrer noopener nofollow" target="_blank" href="https://css-tricks.com/snippets/css/complete-guide-grid/">CSS-Tricks</a></li>
+            <li>Rachel Andrew: <a rel="noreferrer noopener nofollow" target="_blank" href="https://rachelandrew.co.uk/css/cheatsheets/box-alignment">Box Alignment</a>, <a rel="noreferrer noopener nofollow" target="_blank" href="https://gridbyexample.com/">Grid by Example</a>, <a rel="noreferrer noopener nofollow" target="_blank" href="https://abookapart.com/products/the-new-css-layout">The New CSS Layout (📕)</a></li>
+            <li>Game: <a rel="noreferrer noopener nofollow" target="_blank" href="https://cssgridgarden.com/">Grid Garden</a></li>
+            <li><a rel="noreferrer noopener nofollow" target="_blank" href="https://codepen.io/collection/XqjeaM/">CodePen Grid Collection</a></li>
+            <li><a rel="noreferrer noopener nofollow" target="_blank" href="https://www.gridtoflex.com/">Flexbox Fallbacks for Grid Layouts</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>James Steinbach</h2>
+          <h3>Senior UX Developer<br /> at <a rel="noreferrer noopener nofollow" target="_blank" href="https://dockyard.com/blog/authors/james-steinbach">DockYard</a></h3>
+          <h2><code>jdsteinbach</code></h2>
+          <h3><a rel="noreferrer noopener nofollow" target="_blank" href="https://twitter.com">Twitter</a> | <a rel="noreferrer noopener nofollow" target="_blank" href="https://github.com/jdsteinbach">Github</a> | <a href="https://jdsteinbach.com">Blog</a></h3>
+        </section>
+      </div>
+
+      <a id="colophon" href="https://jdsteinbach.com/css-basics-grid">jds.li/grid</a>
+    </div>
+
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="lib/js/tinycolor.min.js"></script>
+    <script src="lib/js/vue.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        width: 780,
+        transition: 'convex',
+        dependencies: [
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/zoom-js/zoom.js', async: true }
+        ]
+      });
+    </script>
+    <script>
+      Vue.use({
+        install: function(Vue, options) {
+          Object.defineProperty(Vue.prototype, 'uniqId', {
+            get: function uniqId() {
+              return this._uid;
+            }
+          });
+        }
+      });
+
+      Vue.component('grid-container', {
+        props: {
+          children: {
+            type: Number,
+            default: 6
+          },
+          property: {
+            type: String,
+            default: ''
+          },
+          value: {
+            type: String,
+            default: 'initial'
+          },
+          interactiveChildren: {
+            type: Boolean,
+            default: false
+          },
+          hideSelect: {
+            type: Boolean,
+            default: false
+          },
+          propertyB: {
+            type: String,
+            default: ''
+          },
+          valueB: {
+            type: String,
+            default: ''
+          },
+          propertyC: {
+            type: String,
+            default: ''
+          },
+          valueC: {
+            type: String,
+            default: ''
+          }
+        },
+        methods: {
+          updateStyle: function(e) {
+            this.value = e.target.value
+          }
+        },
+        computed: {
+          currentContainerStyles: function() {
+            var styles = this.gridContainerStyles
+            if (this.property && this.value) {
+              styles[this.property] = this.value
+            }
+            if (this.propertyB && this.valueB) {
+              styles[this.propertyB] = this.valueB
+            }
+            if (this.propertyC && this.valueC) {
+              styles[this.propertyC] = this.valueC
+            }
+            if (this.interactiveChildren) {
+              styles.height = '32rem'
+              if ([this.property, this.propertyB].indexOf('grid-template-column') === -1) {
+                styles.gridTemplateColumns = 'repeat(3, 1fr)'
+              }
+              if ([this.property, this.propertyB].indexOf('grid-template-rows') === -1) {
+                styles.gridTemplateRows = 'repeat(3, 1fr)'
+              }
+            }
+            return styles
+          },
+          propertyOptions: function() {
+            return this.propertyValues[this.property]
+          },
+          childCount: function() {
+            var count = []
+            for (i = 0;i < this.children; i++) {
+              count.push(i+1)
+            }
+            return count
+          },
+          interactiveSelf: function() {
+            return !this.interactiveChildren && !this.hideSelect
+          }
+        },
+        data: function() {
+          return {
+            propertyValues: {
+              'grid-template-columns': [
+                '1fr 8em 200px',
+                'repeat(3, 200px)',
+                '1fr 1.6fr 2.6fr',
+              ],
+              'grid-template-rows': [
+                '100px 150px',
+                'repeat(2, 3em)',
+                '1fr 1.6fr',
+              ],
+              'gap': [
+                '10px',
+                '1em',
+                '10px 5%'
+              ],
+              'justify-items': [
+                'normal',
+                'stretch',
+                'start',
+                'end',
+                'center',
+                'flex-start',
+                'flex-end',
+                'left',
+                'right'
+              ],
+              'align-items': [
+                'normal',
+                'stretch',
+                'start',
+                'end',
+                'center',
+                'flex-start',
+                'flex-end',
+                'baseline',
+                'first baseline',
+                'last baseline'
+              ]
+            },
+            gridContainerStyles: {
+              display: 'grid',
+              gridTemplateColumns: 'repeat(' + Math.ceil(this.children / 2) + ', 1fr)',
+              gridTemplateRows: 'repeat(' + Math.ceil(this.children / 3) + ', 1fr)',
+              gap: '10px',
+              margin: '2rem 2px 0',
+              padding: '0',
+              height: '24rem',
+              border: '2px solid #ebecf0',
+              backgroundColor: '#ebecf0'
+            },
+            labelStyles: {
+              display: 'block',
+              textAlign: 'center',
+              fontSize: '3rem'
+            },
+            selectStyles: {
+              padding: '.125em .5em',
+              border: '2px solid #222',
+              borderRadius: '.25em',
+              fontSize: '3rem'
+            },
+            optionStyles: {
+              fontSize: '4rem'
+            }
+          }
+        },
+        beforeMount () {
+          this.id = this._uid
+        },
+        template: '<div><div v-if="interactiveSelf"><label :for="id" :style="labelStyles">{{property}}</label><select :id="id" :style="selectStyles" v-model="value" v-on:change="updateStyle"><option selected>initial</option><option v-for="prop in propertyOptions" :style="optionStyles">{{prop}}</option></select></div><div class="grid-container" :style="currentContainerStyles"><grid-child v-for="child in childCount" :iteration="child" :is-interactive="interactiveChildren"></grid-child></div></div>'
+      });
+
+      Vue.component('grid-child', {
+        props: {
+          isInteractive: {
+            type: Boolean,
+            default: false
+          },
+          iteration: {
+            type: Number,
+            default: 1
+          },
+          property: {
+            type: String,
+            default: ''
+          },
+          value: {
+            type: String,
+            default: ''
+          }
+        },
+        data: function() {
+          return {
+            defaultStyles: {
+              display: 'block',
+              marginTop: 0,
+              marginRight: 0,
+              marginBottom: 0,
+              marginLeft: 0,
+              padding: '0rem 2rem 1rem',
+              background: 'linear-gradient(120deg, #60569c, #1d1a30)',
+              color: '#eee',
+              textAlign: 'center',
+              fontSize: '5rem',
+              fontWeight: 'bold',
+              lineHeight: 2,
+              position: 'relative',
+              boxSizing: 'border-box'
+            },
+            iteratorDefaultStyles: {
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              padding: '1rem .125em',
+              color: '#eee',
+              fontSize: '2rem',
+              lineHeight: 1,
+              textShadow: 'none',
+              opacity: .75
+            },
+            labelStyles: {
+              position: 'absolute',
+              height: 0,
+              width: 0,
+              overflow: 'hidden',
+              display: 'none'
+            },
+            inputStyles: {
+              fontSize: '1.5rem',
+              margin: '.5rem 0',
+              padding: 0,
+              display: 'block',
+              width: '100%'
+            },
+            allowedProperties: [
+              'grid-column',
+              'grid-row',
+              'grid-area',
+              'align-self',
+              'justify-self',
+              'order',
+              'margin-top',
+              'margin-left',
+              'margin-bottom',
+              'margin-right',
+              'height',
+              'width'
+            ]
+          }
+        },
+        computed: {
+          childStyles: function() {
+            var styles = this.defaultStyles
+            if (this.isInteractive) {
+              if (
+                this.property &&
+                this.allowedProperties.indexOf(this.property) > -1 &&
+                this.value
+              ) {
+                styles[this.property] = this.value
+              }
+            } else {
+              styles.padding = 0
+            }
+            return styles
+          },
+          iteratorStyles: function() {
+            var styles = this.iteratorDefaultStyles
+            if (!this.isInteractive) {
+              styles.padding = '1em'
+              styles.position = 'static'
+              styles.display = 'block'
+            }
+            return styles
+          },
+          propertyID: function() {
+            return 'p-' + this.id
+          },
+          valueID: function() {
+            return 'v-' + this.id
+          }
+        },
+        beforeMount () {
+          this.id = this._uid
+        },
+        template: '<div :style="childStyles"><div v-if="isInteractive"><label :style="labelStyles" :for="propertyID">Property</label><input :style="inputStyles" placeholder="Property" :id="propertyID" type="text" v-model="property" /><label :style="labelStyles" :for="valueID">Value</label><input :style="inputStyles" placeholder="Value" :id="valueID" type="text" v-model="value" /></div><span :style="iteratorStyles">{{iteration}}</span></div>'
+      })
+
+      new Vue({el: '#vue'});
+    </script>
+  </body>
+</html>
