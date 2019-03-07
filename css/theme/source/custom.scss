@@ -141,7 +141,15 @@ body {
   }
 
   pre {
-    font-size: .7em;
+    font-size: 1em;
+
+    &.small {
+      font-size: .825em;
+    }
+
+    &.tiny {
+      font-size: .7em;
+    }
   }
 
   a {

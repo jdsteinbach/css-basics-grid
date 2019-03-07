@@ -65,7 +65,11 @@ body {
     .reveal section .output > * {
       background-color: #60569c; }
   .reveal section pre {
-    font-size: .7em; }
+    font-size: 1em; }
+    .reveal section pre.small {
+      font-size: .825em; }
+    .reveal section pre.tiny {
+      font-size: .7em; }
   .reveal section a {
     text-decoration: underline; }
   .reveal section table th {

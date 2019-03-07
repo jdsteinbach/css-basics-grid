@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/theme/custom.css">
 
     <!-- Theme used for syntax highlighting of code -->
-    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <link rel="stylesheet" href="lib/css/custom.css">
 
     <!-- Printing and PDF exports -->
     <script>
@@ -40,9 +40,9 @@
 
           <section>
             <h3><code>display: grid</code></h3>
-            <p class="xfragment">This element will use the <b>grid layout</b> method to position all its children.</p>
-            <h3 class="xfragment"><code>display: inline-grid</code></h3>
-            <p class="xfragment"><code>block</code> : <code>inline-block</code> :: <code>grid</code> : <code>inline-grid</code></p>
+            <p class="fragment">This element will use the <b>grid layout</b> method to position all its children.</p>
+            <h3 class="fragment"><code>display: inline-grid</code></h3>
+            <p class="fragment"><code>block</code> : <code>inline-block</code> :: <code>grid</code> : <code>inline-grid</code></p>
           </section>
 
           <section>
@@ -50,20 +50,23 @@
               <li><code>grid-template-columns</code></li>
               <li><code>grid-template-rows</code></li>
               <li><code>grid-template-areas</code></li>
+              <li><code>grid-template</code></li>
               <li><code>grid-auto-columns</code></li>
               <li><code>grid-auto-rows</code></li>
               <li><code>grid</code></li>
               <li><code>gap</code></li>
+              <li><code>justify-content</code></li>
               <li><code>justify-items</code></li>
+              <li><code>align-content</code></li>
               <li><code>align-items</code></li>
             </ul>
           </section>
 
           <section>
             <h3><code>grid-template-columns</code></h3>
-            <p class="xfragment">Set the proportions for tracks along the <em>block axis</em> of the grid container</p>
-            <p class="xfragment">Value: a series of valid length values</p>
-            <ul class="xfragment">
+            <p class="fragment">Set the proportions for tracks along the <em>inline axis</em> of the grid container</p>
+            <p class="fragment">Value: a series of valid length values</p>
+            <ul class="fragment">
               <li><code>1fr 50em 35em 1fr</code></li>
               <li><code>30% 150px 30%</code></li>
             </ul>
@@ -75,9 +78,9 @@
 
           <section>
             <h3><code>grid-template-rows</code></h3>
-            <p class="xfragment">Set the proportions for tracks along the <em>inline axis</em> of the grid container</p>
-            <p class="xfragment">Value: a series of valid length values</p>
-            <ul class="xfragment">
+            <p class="fragment">Set the proportions for tracks along the <em>block axis</em> of the grid container</p>
+            <p class="fragment">Value: a series of valid length values</p>
+            <ul class="fragment">
               <li><code>300px 200px auto</code></li>
               <li><code>30% 150px 30%</code></li>
             </ul>
@@ -89,20 +92,45 @@
 
           <section>
             <h3><code>grid-template-areas</code></h3>
-            <p class="xfragment">Assign names to grid areas</p>
-            <pre><code class="css">grid-template-columns: 40em 20em;
-grid-template-rows: repeat(3, auto);
-grid-template-areas:
-  "header header"
-  "body sidebar"
-  "footer footer";</code></pre>
+            <p class="fragment">Assign names to grid areas</p>
+            <pre class="fragment small"><code class="css">.grid {
+  grid-template-columns: 40em 20em;
+  grid-template-rows: repeat(3, auto);
+  grid-template-areas:
+    "header header"
+    "body sidebar"
+    "footer footer";
+}</code></pre>
+          </section>
+
+          <section>
+            <h3><code>grid-template</code></h3>
+            <p class="fragment">Assign rows, columns, and areas</p>
+            <pre class="fragment"><code class="css">.grid {
+  grid-template:
+    "header header"  auto
+    "body   sidebar" auto
+    "footer footer"  auto /
+     40em   20em;
+}</code></pre>
+          </section>
+
+          <section>
+            <h3><code>grid-template</code></h3>
+            <pre class="fragment"><code class="css">.grid {
+  grid-template:
+    "👱‍♀️   👱‍♀️" auto
+    "📄   📶" auto
+    "🦶   🦶" auto /
+     40em 20em;
+}</code></pre>
           </section>
 
           <section>
             <h3><code>grid-auto-columns</code></h3>
-            <p class="xfragment">Set size to be repeated for all tracks along the <em>block axis</em> of the grid container</p>
-            <p class="xfragment">Value: a valid length value</p>
-            <ul class="xfragment" style="columns: 2; column-gap: 2em">
+            <p class="fragment">Set size to be repeated for all tracks along the <em>inline axis</em> of the grid container</p>
+            <p class="fragment">Value: a valid length value</p>
+            <ul class="fragment" style="columns: 2; column-gap: 2em">
               <li><code>200px</code></li>
               <li><code>1fr</code></li>
               <li><code>20%</code></li>
@@ -112,9 +140,9 @@ grid-template-areas:
 
           <section>
             <h3><code>grid-auto-rows</code></h3>
-            <p class="xfragment">Set size to be repeated for all tracks along the <em>inline axis</em> of the grid container</p>
-            <p class="xfragment">Value: a valid length value</p>
-            <ul class="xfragment" style="columns: 2; column-gap: 2em">
+            <p class="fragment">Set size to be repeated for all tracks along the <em>block axis</em> of the grid container</p>
+            <p class="fragment">Value: a valid length value</p>
+            <ul class="fragment" style="columns: 2; column-gap: 2em">
               <li><code>200px</code></li>
               <li><code>10rem</code></li>
               <li><code>auto</code></li>
@@ -123,15 +151,15 @@ grid-template-areas:
 
           <section>
             <h3><code>grid</code></h3>
-            <p class="xfragment">Shorthand for any pair of <br /><code>-template-</code> or <code>-auto-</code> <br /><code>rows</code> / <code>columns</code> values</p>
-            <p class="xfragment"><code>rows / columns</code></p>
+            <p class="fragment">Shorthand for any pair of <br /><code>rows</code> / <code>columns</code> values <br />(<code>-template-</code> or <code>-auto-</code>)</p>
+            <p class="fragment">Syntax: <code>rows / columns</code></p>
           </section>
 
           <section>
             <h3><code>gap</code></h3>
-            <p class="xfragment">Creates gaps between columns and rows</p>
-            <p class="xfragment">Formerly called <code>grid-gap</code></p>
-            <p class="xfragment">Shorthand for <br /><code>row-gap column-gap</code></p>
+            <p class="fragment">Creates gaps between columns and rows</p>
+            <p class="fragment">Formerly called <code>grid-gap</code></p>
+            <p class="fragment">Shorthand for <br /><code>row-gap column-gap</code></p>
           </section>
 
           <section>
@@ -139,16 +167,31 @@ grid-template-areas:
           </section>
 
           <section>
-            <h3><code>justify-items</code></h3>
-            <p class="xfragment">Distributes children along the <em>inline axis</em> of the flex container</p>
-            <ul style="columns: 2">
+            <h3><code>justify-content</code></h3>
+            <p class="fragment">Distributes tracks (columns) along the <em>inline axis</em> of the grid container</p>
+            <ul class="fragment" style="columns: 2">
               <li><code>stretch</code></li>
               <li><code>start</code></li>
               <li><code>end</code></li>
               <li><code>center</code></li>
-              <li><code>baseline</code></li>
-              <li><code>first baseline</code></li>
-              <li><code>last baseline</code></li>
+              <li><code>space-between</code></li>
+              <li><code>space-around</code></li>
+              <li><code>space-evenly</code></li>
+            </ul>
+          </section>
+
+          <section>
+            <grid-container property="justify-content" />
+          </section>
+
+          <section>
+            <h3><code>justify-items</code></h3>
+            <p class="fragment">Distributes children along the <em>inline axis</em> within their track (column)</p>
+            <ul class="fragment" style="columns: 2; column-gap: 8rem">
+              <li><code>stretch</code></li>
+              <li><code>start</code></li>
+              <li><code>end</code></li>
+              <li><code>center</code></li>
             </ul>
           </section>
 
@@ -157,9 +200,27 @@ grid-template-areas:
           </section>
 
           <section>
+            <h3><code>align-content</code></h3>
+            <p class="fragment">Distributes tracks (rows) along the <em>block axis</em> of the grid container</p>
+            <ul class="fragment" style="columns: 2; column-gap: 8rem">
+              <li><code>stretch</code></li>
+              <li><code>start</code></li>
+              <li><code>end</code></li>
+              <li><code>center</code></li>
+              <li><code>space-between</code></li>
+              <li><code>space-around</code></li>
+              <li><code>space-evenly</code></li>
+            </ul>
+          </section>
+
+          <section>
+            <grid-container property="align-content" />
+          </section>
+
+          <section>
             <h3><code>align-items</code></h3>
-            <p class="xfragment">Aligns children on the <em>inline axis</em> of the flex container</p>
-            <ul style="columns: 2">
+            <p class="fragment">Aligns children on the <em>block axis</em> within their track (row)</p>
+            <ul class="fragment" style="columns: 2">
               <li><code>start</code></li>
               <li><code>end</code></li>
               <li><code>center</code></li>
@@ -182,8 +243,8 @@ grid-template-areas:
 
           <section>
             <h3>CSS Lengths</h3>
-            <p class="xfragment">Any normal CSS length is a valid grid track value.</p>
-            <ul class="xfragment" style="columns: 3; column-gap: 2em">
+            <p class="fragment">Any normal CSS length is a valid grid track value.</p>
+            <ul class="fragment" style="columns: 3; column-gap: 2em">
               <li><code>px</code></li>
               <li><code>%</code></li>
               <li><code>pt</code></li>
@@ -203,44 +264,65 @@ grid-template-areas:
 
           <section>
             <h3><code>fr</code></h3>
-            <p class="xfragment">One &ldquo;fraction&rdquo; of the grid&rsquo;s available space</p>
-            <p class="xfragment">Based on total number of <code>fr</code> in the row or column</p>
-            <p class="xfragment">Calculated after non-<code>fr</code> space is used</p>
-            <a href="https://codepen.io/jdsteinbach/pen/PVYVKB" rel="noopener noreferer nofollow" target="_blank" class="pen">Grid f r row height on CodePen</a>
+            <p class="fragment">One &ldquo;<span style="text-decoration: underline">fr</span>action&rdquo; of the grid&rsquo;s <span style="text-decoration: underline">fr</span>ee space</p>
+            <p class="fragment">Based on total number of <code>fr</code> in the row or column</p>
+            <p class="fragment">Calculated after non-<code>fr</code> space is used</p>
+            <a href="https://codepen.io/jdsteinbach/pen/PVYVKB" rel="noopener noreferer nofollow" target="_blank" class="pen">Grid fr row height on CodePen</a>
           </section>
 
           <section>
             <h3><code>fr</code></h3>
-            <p class="xfragment"><code>300px 1fr</code></p>
-            <p class="xfragment"><code>1fr 50em 25em 1fr</code></p>
-            <p class="xfragment"><code>.6fr 1.6fr 1fr</code></p>
+            <p class="fragment"><code>300px 1fr</code></p>
+            <p class="fragment"><code>1fr 50em 25em 1fr</code></p>
+            <p class="fragment"><code>.6fr 1.6fr 1fr</code></p>
           </section>
 
           <section>
             <h3><code>min-content</code><br /><code>max-content</code></h3>
-            <p class="xfragment">The smallest and largest space that the elements in that track can take up</p>
+            <p class="fragment">The smallest and largest space that the elements in that track can take up</p>
             <a href="https://codepen.io/jdsteinbach/pen/jXjOYz" rel="noopener noreferer nofollow" target="_blank" class="pen">min-content and max-content on CodePen</a>
           </section>
 
           <section>
-            <h3><code>repeat()</code></h3>
-            <p class="xfragment">Repeats a certain value a specified number of times</p>
-            <p class="xfragment"><code>repeat(&lt;count&gt;, &lt;length&gt;)</code></p>
-            <p class="xfragment"><code>repeat(12, 1fr)</code></p>
-          </section>
-
-          <section>
             <h3><code>minmax()</code></h3>
-            <p class="xfragment">Finds a value between two lengths</p>
-            <p class="xfragment"><code>minmax(&lt;min&gt;, &lt;max&gt;)</code></p>
-            <p class="xfragment"><code>minmax(0, 1fr)</code></p>
+            <p class="fragment">Finds a value between two lengths</p>
+            <p class="fragment"><code>minmax(&lt;min&gt;, &lt;max&gt;)</code></p>
+            <p class="fragment"><code>minmax(10px, 1fr)</code></p>
           </section>
 
           <section>
             <h3><code>fit-content()</code></h3>
-            <p class="xfragment">Equivalent to <br /><code>minmax(auto, max-content)</code></p>
-            <p class="xfragment">Clamp argument overrides <br /><code>max-content</code></p>
-            <p class="xfragment"><code>fit-content(&lt;clamp&gt;)</code></p>
+            <p class="fragment">Equivalent to <br /><code>minmax(auto, max-content)</code></p>
+            <p class="fragment">Clamp argument overrides <br /><code>max-content</code></p>
+            <p class="fragment"><code>fit-content(&lt;clamp&gt;)</code></p>
+          </section>
+
+          <section>
+            <h3><code>repeat()</code></h3>
+            <p class="fragment">Repeats a certain value a specified number of times</p>
+            <p class="fragment"><code>repeat(&lt;count&gt;, &lt;length&gt;)</code></p>
+            <p class="fragment"><code>repeat(12, 1fr)</code></p>
+          </section>
+
+          <section>
+            <h3><code>auto-fill</code></h3>
+            <p class="fragment">A <code>&lt;count&gt;</code> value for <code>repeat()</code></p>
+            <p class="fragment">Repeats a certain value until the current track is filled</p>
+            <pre class="fragment"><code>repeat(
+  auto-fill,
+  minmax(200px, 1fr)
+)</code></pre>
+          </section>
+
+          <section>
+            <h3><code>auto-fit</code></h3>
+            <p class="fragment">A <code>&lt;count&gt;</code> value for <code>repeat()</code></p>
+            <p class="fragment">Repeats a certain value until the children are accounted for</p>
+            <pre class="fragment"><code>repeat(
+  auto-fit,
+  minmax(200px, 1fr)
+)</code></pre>
+            <a href="https://codepen.io/jdsteinbach/pen/ywgmqB" rel="noopener noreferer nofollow" target="_blank" class="pen">auto-fill vs auto-fit on CodePen</a>
           </section>
         </section>
 
@@ -262,22 +344,22 @@ grid-template-areas:
 
           <section>
             <h3><code>grid-column</code></h3>
-            <p class="xfragment">Which column grid-line(s) this element should start (&amp; stop) at</p>
-            <p class="xfragment">Numbers correspond to <i>gaps</i>, not <i>columns</i></p>
-            <p class="xfragment">Values: <code>integer [ integer ]</code></p>
+            <p class="fragment">Which column grid-line(s) this element should start (&amp; stop) at</p>
+            <p class="fragment">Numbers correspond to <i>edges</i>, not <i>columns</i></p>
+            <p class="fragment">Values: <code>integer [/&nbsp;integer]</code></p>
           </section>
 
           <section>
             <h3><code>grid-row</code></h3>
-            <p class="xfragment">Which row grid-line(s) this element should start (&amp; stop) at</p>
-            <p class="xfragment">Numbers correspond to <i>gaps</i>, not <i>columns</i></p>
-            <p class="xfragment">Values: <code>integer [ integer ]</code></p>
+            <p class="fragment">Which row grid-line(s) this element should start (&amp; stop) at</p>
+            <p class="fragment">Numbers correspond to <i>edges</i>, not <i>rows</i></p>
+            <p class="fragment">Values: <code>integer [/&nbsp;integer]</code></p>
           </section>
 
           <section>
             <h3><code>grid-area</code></h3>
-            <p class="xfragment">A named <code>grid-template-areas</code> location</p>
-            <p class="xfragment">Shorthand for <br /><code>row-start / column-start / row-end / column-end</code></p>
+            <p class="fragment">A named <code>grid-template-areas</code> location</p>
+            <p class="fragment">Shorthand for <br /><code>row-start / column-start / row-end / column-end</code></p>
           </section>
 
           <section>
@@ -286,21 +368,21 @@ grid-template-areas:
 
           <section>
             <h3><code>order</code></h3>
-            <p class="xfragment">Change the element&rsquo;s location along the <em>main axis</em></p>
-            <p class="xfragment">Relative to <code>order</code> of all siblings</p>
-            <p class="xfragment">Value: <code>integer</code></p>
+            <p class="fragment">Change the element&rsquo;s location along the <em>main axis</em></p>
+            <p class="fragment">Relative to <code>order</code> of all siblings</p>
+            <p class="fragment">Value: <code>integer</code></p>
           </section>
 
           <section>
             <h3><code>align-self</code></h3>
-            <p class="xfragment">Allows the element to override its parent&rsquo;s <code>align-items</code> value</p>
-            <p class="xfragment">Value: any <code>align-items</code> value</p>
+            <p class="fragment">Allows the element to override its parent&rsquo;s <code>align-items</code> value</p>
+            <p class="fragment">Value: any <code>align-items</code> value</p>
           </section>
 
           <section>
             <h3><code>justify-self</code></h3>
-            <p class="xfragment">Allows the element to override its parent&rsquo;s <code>justify-items</code> value</p>
-            <p class="xfragment">Value: any <code>justify-items</code> value</p>
+            <p class="fragment">Allows the element to override its parent&rsquo;s <code>justify-items</code> value</p>
+            <p class="fragment">Value: any <code>justify-items</code> value</p>
           </section>
 
           <section>
@@ -315,7 +397,7 @@ grid-template-areas:
 
           <section>
             <h3>Perfect Centering</h3>
-            <pre class="xfragment"><code>.container {
+            <pre class="fragment"><code>.grid {
   display: grid;
   justify-items: center;
   align-items: center;
@@ -336,7 +418,7 @@ grid-template-areas:
 
           <section>
             <h3>Global Grid Layout</h3>
-            <pre class="xfragment"><code>.parent {
+            <pre class="fragment small"><code>.parent {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
@@ -357,7 +439,7 @@ grid-template-areas:
 
           <section>
             <h3>Equal-Height Grids</h3>
-            <pre class="xfragment"><code>.parent {
+            <pre class="fragment small"><code>.parent {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: 1fr;
@@ -382,15 +464,17 @@ grid-template-areas:
               <p style="margin:.5em"><a href="https://codepen.io/jdsteinbach/pen/NoWKbE?editors=1100" target="_blank" rel="noopener">Header/Footer</a></p>
               <p style="margin:.5em"><a href="https://codepen.io/jdsteinbach/pen/bzGbgm?editors=1100" target="_blank" rel="noopener">&ldquo;Holy Grail&rdquo; Layout</a></p>
               <p style="margin:.5em"><a href="https://codepen.io/jdsteinbach/pen/zeYORB?editors=1100" target="_blank" rel="noopener">Header Nav</a></p>
-              <p style="margin:.5em"><a href="https://codepen.io/jdsteinbach/pen/MLWWop?editors=1100" target="_blank" rel="noopener">Calendar</a></p>
+              <p style="margin:.5em"><a href="https://codepen.io/jdsteinbach/pen/zeYORB?editors=1100" target="_blank" rel="noopener">Responsive Components</a></p>
+              <p style="margin:.5em"><a href="https://codepen.io/jdsteinbach/pen/bZgXyJ?editors=1100" target="_blank" rel="noopener">Calendar</a></p>
               <p style="margin:.5em"><a href="https://codepen.io/jdsteinbach/pen/QJWbMb?editors=1100" target="_blank" rel="noopener">Bar Chart</a></p>
+              <p style="margin:.5em"><a href="https://codepen.io/jdsteinbach/pen/omojyj?editors=1100" target="_blank" rel="noopener">Image Spiral</a></p>
             </div>
           </section>
 
           <section>
             <h3>Flexbox vs. Grid</h3>
-            <p class="xfragment">Flexbox is 1-dimensional: it sets a <em>main axis</em> and provides controls for positioning elements along that axis.</p>
-            <p class="xfragment">Grid is 2-dimensional: it sets both block and inline axes and provides controls for positioning elements along either/both axes.</p>
+            <p class="fragment">Flexbox is 1-dimensional: it sets a <em>main axis</em> and provides controls for positioning elements along that axis.</p>
+            <p class="fragment">Grid is 2-dimensional: it sets both block and inline axes and provides controls for positioning elements along either/both axes.</p>
           </section>
         </section>
 
@@ -419,7 +503,6 @@ grid-template-areas:
 
 
     <script src="lib/js/head.min.js"></script>
-    <script src="lib/js/tinycolor.min.js"></script>
     <script src="lib/js/vue.min.js"></script>
     <script src="js/reveal.js"></script>
 
@@ -517,6 +600,10 @@ grid-template-areas:
                 styles.gridTemplateRows = 'repeat(3, 1fr)'
               }
             }
+            if (this.property.indexOf('-content') >= 0) {
+              styles.gridTemplateColumns = 'repeat(3, auto)';
+              styles.gridTemplateRows = 'repeat(3, auto)';
+            }
             return styles
           },
           propertyOptions: function() {
@@ -539,40 +626,47 @@ grid-template-areas:
               'grid-template-columns': [
                 '1fr 8em 200px',
                 'repeat(3, 200px)',
-                '1fr 1.6fr 2.6fr',
+                '1fr 2fr 3fr',
               ],
               'grid-template-rows': [
                 '100px 150px',
                 'repeat(2, 3em)',
-                '1fr 1.6fr',
+                '1fr 2fr',
               ],
               'gap': [
                 '10px',
                 '1em',
                 '10px 5%'
               ],
-              'justify-items': [
-                'normal',
+              'justify-content': [
                 'stretch',
                 'start',
                 'end',
                 'center',
-                'flex-start',
-                'flex-end',
-                'left',
-                'right'
+                'space-between',
+                'space-around',
+                'space-evenly'
+              ],
+              'justify-items': [
+                'stretch',
+                'start',
+                'end',
+                'center'
+              ],
+              'align-content': [
+                'stretch',
+                'start',
+                'end',
+                'center',
+                'space-between',
+                'space-around',
+                'space-evenly'
               ],
               'align-items': [
-                'normal',
                 'stretch',
                 'start',
                 'end',
-                'center',
-                'flex-start',
-                'flex-end',
-                'baseline',
-                'first baseline',
-                'last baseline'
+                'center'
               ]
             },
             gridContainerStyles: {
